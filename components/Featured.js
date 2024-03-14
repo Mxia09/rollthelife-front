@@ -1,5 +1,6 @@
 import Center from "./Center";
 import styled from "styled-components";
+import PrimaryBtn from "./PrimaryBtn";
 
 const Bg = styled.div`
 background-color:#222;
@@ -43,7 +44,7 @@ export default function Featured() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor nec feugiat nisl pretium fusce id. Leo urna molestie at elementum. Massa placerat duis ultricies lacus sed. Sit amet consectetur adipiscing elit ut aliquam purus sit. Duis convallis convallis tellus id interdum velit laoreet. Duis at tellus at urna condimentum. Aliquam ut porttitor leo a diam. Tortor dignissim convallis aenean et tortor at risus. Molestie nunc non blandit massa enim.
                         </Description>
                         <button>Learn more</button>
-                        <button>Add to cart</button>
+                        <PrimaryBtn size="l">Add to cart</PrimaryBtn>
                     </div>
                     </Column>
                     <Column>
