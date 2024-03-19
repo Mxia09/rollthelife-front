@@ -1,10 +1,10 @@
 import styled, {css} from "styled-components";
 
-const ButtonStyle = css `
-broder: 0;
+export const ButtonStyle = css `
+border:0;
 padding: 5px 15px;
-border-radius: 5px;
-cursor: pointer;
+border-radius: 5px; 
+cursor: pointer; 
 display: inline-flex;
 align-items: center;
 text-decoration: none;
