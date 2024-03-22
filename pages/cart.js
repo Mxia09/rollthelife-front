@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { useContext, useEffect, useState} from "react";
 import styled, {css} from "styled-components";
 import axios from "axios";
+import Table from "@/components/Table";
 
 const ColumnsWrapper = styled.div`
     display: grid;
@@ -17,6 +18,28 @@ const Box = styled.div`
     background-color: #fff;
     border-radius: 10px;
     padding: 30px;
+`;
+
+const ProductInfoCell = styled.td`
+    padding: 10px 0;
+`;
+
+const ProductImageBox = styled.div`
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    border-radius:10px;
+    img{
+        max-width:80px;
+        max-height:80px;
+    }
+    td{
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    };
 `;
 
 export default function CartPage() {
@@ -42,7 +65,7 @@ export default function CartPage() {
                             <div>Your cart is empty</div>
                         )}
                         {products?.length > 0 && (
-                            <table>
+                            <Table>
                                 <thead>
                                     <tr>
                                         <th>Product</th>
@@ -53,15 +76,22 @@ export default function CartPage() {
                                 <tbody>
                                     {products.map(product => (
                                         <tr>
-                                            <td>{product.title}</td>
+                                            <ProductInfoCell>
+                                                <ProductImageBox>
+                                                    <img src={product.images[0]} alt=""/>
+                                                </ProductImageBox>
+                                                {product.title}
+                                            </ProductInfoCell>
                                             <td>
                                                 {cartProducts.filter(id => id === product._id).length}
                                             </td>
-                                            <td>Price</td>
+                                            <td>
+                                                ${cartProducts.filter(id => id === product._id).length * product.price}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
-                            </table>
+                            </Table>
                         )}
                     </Box>
                     {!!cartProducts?.length && (
