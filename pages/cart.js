@@ -81,12 +81,37 @@ export default function CartPage() {
         removeProduct(id);
     }
 
+    async function goToPayment() {
+        const response = await axios.post('/api/checkout', {
+            name, email, city, zipCode, setAddress, country,
+            cartProducts,
+        });
+        if (response.data.url) {
+            window.location = response.data.url;
+        }
+    }    
+
     let total = 0;
     for (const productId of cartProducts) {
         const price = products.find(p => p._id === productId)?.price || 0;
         total += price
     }
 
+    if (window.location.href.includes('success')) {
+        return(
+            <>
+                <Header/>
+                <Center>
+                    <ColumnsWrapper>
+                    <Box>
+                        <h1>Your Order Was Received!</h1>
+                        <p>An email with order details has been sent to you.</p>
+                    </Box>
+                    </ColumnsWrapper>
+                </Center>
+            </>
+        )
+    }
     return(
         <>
             <Header/>
@@ -139,8 +164,7 @@ export default function CartPage() {
                     </Box>
                     {!!cartProducts?.length && (
                                             <Box>
-                                            <h2>Order Info</h2>
-                                            <form method="post" action="/api/checkout">
+                                            <h2>Order Info</h2>                                                
                                                 <Input type="text" 
                                                     placeholder="Name" 
                                                     value={name} 
@@ -175,8 +199,7 @@ export default function CartPage() {
                                                     <input type="hidden" 
                                                         name="products"
                                                         value={cartProducts.join(',')} />
-                                                <Button black block type="submit">Continue to Payment</Button>
-                                            </form>
+                                                <Button black block onClick={goToPayment} >Continue to Payment</Button>
                                             </Box>  
                     )}
                 </ColumnsWrapper>
