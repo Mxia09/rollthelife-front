@@ -43,5 +43,3 @@ export const config = {
     api: {bodyParser:false}
 }
 
-// modest-relish-fame-liked
-// acct_1OxH9b01aOogh3su

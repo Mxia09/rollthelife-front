@@ -36,7 +36,7 @@ export default function Header() {
             <Center>
                 <Warpper>
                 <Logo href={'/'}>
-                    Roll The Life 
+                    Soled Out 
                 </Logo>
                 <StyledNav>
                     <NavLink href={'/'}>Home</NavLink>
