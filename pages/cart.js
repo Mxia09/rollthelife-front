@@ -10,7 +10,10 @@ import Input from "@/components/Input";
 
 const ColumnsWrapper = styled.div`
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
     gap: 40px;
     margin-top: 40px;
 `;
@@ -26,9 +29,9 @@ const ProductInfoCell = styled.td`
 `;
 
 const ProductImageBox = styled.div`
-    width: 100px;
+    width: 90px;
     height: 100px;
-    padding: 10px;
+    padding: 2px;
     border: 1px solid rgba(0,0,0,0.1);
     display: flex;
     align-items: center; 
@@ -41,6 +44,15 @@ const ProductImageBox = styled.div`
     td{
         border-top: 1px solid rgba(0, 0, 0, 0.1);
     };
+    @media screen and (min-width: 768px) {
+        padding: 10px
+        img{
+            max-width:80px;
+            max-height:80px;
+            width: 100px;
+            height: 100px;
+        }
+    }
 `;
 
 const CityHolder =styled.div`
@@ -49,7 +61,12 @@ const CityHolder =styled.div`
 `;
 
 const QuantityLabel = styled.span`
-    padding: 0 3px;
+    padding: 0 5px;
+    display: block;
+    @media screen and (min-width: 768px) {
+        display: inline-block
+        padding: 0 5px;
+    }
 `;
 
 export default function CartPage() {
